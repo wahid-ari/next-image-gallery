@@ -49,7 +49,7 @@ const Home = ({ images }) => {
               <span className="flex max-h-full max-w-full items-center justify-center">
                 <Bridge />
               </span>
-              <span className="absolute left-0 right-0 bottom-0 h-[200px] bg-gradient-to-b from-black/10 via-black to-black"></span>
+              <span className="absolute left-0 right-0 bottom-0 h-[300px] bg-gradient-to-b from-black/10 via-black to-black"></span>
             </div>
             <div className="ml-16">
               <Logo />
@@ -82,21 +82,20 @@ const Home = ({ images }) => {
               shallow
               className="after:content group relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
             >
-              <div className="relative h-72 md:h-72 w-full">
-                <Image
-                  alt="Next.js Conf photo"
-                  className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                  style={{ transform: 'translate3d(0, 0, 0)' }}
-                  placeholder="blur"
-                  blurDataURL={blurDataUrl}
-                  src={`${public_id}.${format}`}
-                  fill={true}
-                  sizes="(max-width: 640px) 100vw,
+              <Image
+                alt="Photo"
+                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                style={{ transform: 'translate3d(0, 0, 0)' }}
+                placeholder="blur"
+                blurDataURL={blurDataUrl}
+                src={`${public_id}.${format}`}
+                width={720}
+                height={480}
+                sizes="(max-width: 640px) 100vw,
                   (max-width: 1280px) 50vw,
                   (max-width: 1536px) 33vw,
                   25vw"
-                />
-              </div>
+              />
             </Link>
           ))}
         </div>
