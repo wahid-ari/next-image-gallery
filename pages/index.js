@@ -29,15 +29,9 @@ const Home = ({ images }) => {
   return (
     <>
       <Head>
-        <title>Next.js Conf 2022 Photos</title>
-        <meta
-          property="og:image"
-          content="https://nextjsconf-pics.vercel.app/og-image.png"
-        />
-        <meta
-          name="twitter:image"
-          content="https://nextjsconf-pics.vercel.app/og-image.png"
-        />
+        <title>Next.js Gallery Template</title>
+        <meta property="og:image" content="https://next-image-galleryy.vercel.app/og-image.png" />
+        <meta name="twitter:image" content="https://next-image-galleryy.vercel.app/og-image.png" />
       </Head>
       <main className="mx-auto max-w-[1960px] p-4">
         {photoId && (
