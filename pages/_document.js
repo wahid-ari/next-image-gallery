@@ -6,7 +6,6 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="icon" href="/favicon.ico" />
-          <meta charset="UTF-8" />
           <meta name="description" content="Next.js Gallery Template" />
           <meta property="og:site_name" content="next-image-galleryy.vercel.app" />
           <meta property="og:description" content="Next.js Gallery Template" />
