@@ -1,17 +1,13 @@
+import { useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 import { Dialog } from '@headlessui/react'
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/router'
-import { useRef, useState } from 'react'
 import useKeypress from 'react-use-keypress'
-import type { ImageProps } from '../utils/types'
 import SharedModal from './SharedModal'
 
 export default function Modal({
   images,
   onClose,
-}: {
-  images: ImageProps[]
-  onClose?: () => void
 }) {
   let overlayRef = useRef()
   const router = useRouter()
@@ -27,7 +23,7 @@ export default function Modal({
     onClose()
   }
 
-  function changePhotoId(newVal: number) {
+  function changePhotoId(newVal) {
     if (newVal > index) {
       setDirection(1)
     } else {
