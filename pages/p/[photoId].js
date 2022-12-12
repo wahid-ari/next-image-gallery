@@ -10,11 +10,12 @@ export default function Home({ currentPhoto }) {
   let index = Number(photoId)
 
   const currentPhotoUrl = `${currentPhoto.public_id}.${currentPhoto.format}`
+  const title = `${currentPhoto.altText} | Next.js Gallery Template`
 
   return (
     <>
       <Head>
-        <title>Next.js Gallery Template</title>
+        <title>{title}</title>
         <meta property="og:image" content={currentPhotoUrl} />
         <meta name="twitter:image" content={currentPhotoUrl} />
       </Head>
@@ -44,6 +45,17 @@ export async function getStaticProps(context) {
     (img) => img.id === Number(context.params.photoId)
   )
   currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
+  // https://twitter.com/nutlope/status/1600528460644057090
+  // https://github.com/Nutlope/alt-text-generator
+  // https://python-alt-text-generator.vercel.app/generate?imageUrl=
+  // https://github.com/vercel/examples/tree/main/solutions/alt-tag-generator
+  // https://alt-text-generator.vercel.app/api/generate?imageUrl=
+  // const ress = await fetch(`https://python-alt-text-generator.vercel.app/generate?imageUrl=${currentPhoto.public_id}`)
+  // const altTextt = await ress.text()
+  // console.log(altTextt.split("Caption: ")[1])
+  const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${currentPhoto.public_id}`)
+  const altText = await res.text()
+  currentPhoto.altText = altText.replace(/"|"/gi, '')
 
   return {
     props: {

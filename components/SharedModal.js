@@ -44,7 +44,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
         opacity: { duration: 0.2 },
       }}
     >
-      <div
+      <div title={currentImage.altText}
         className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto"
         {...handlers}
       >
@@ -65,8 +65,8 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                   src={`${currentImage.public_id}.${currentImage.format}`}
                   width={navigation ? 1280 : 1920}
                   height={navigation ? 853 : 1280}
-                  priority
-                  alt="Next.js Conf image"
+                  priority={true}
+                  alt={currentImage.altText || "Photo"}
                   onLoadingComplete={() => setLoaded(true)}
                 />
               </motion.div>

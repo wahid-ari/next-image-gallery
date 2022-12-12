@@ -32,7 +32,6 @@ export default function Carousel({ index, currentPhoto }) {
           className="pointer-events-none h-full w-full blur-3xl"
           alt="blurred background"
           fill
-          priority={true}
         />
       </button>
       <SharedModal

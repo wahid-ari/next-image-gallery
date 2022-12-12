@@ -62,7 +62,7 @@ export default function Home({ images }) {
               Photos Template
             </a>
             <p className="max-w-[40ch] text-white/75 sm:max-w-[32ch]">
-              This example shows how to create an image gallery site using Next.js
+              This example shows how to create an Image Gallery site using Next.js and Alt Generator
             </p>
             <a
               className="pointer z-10 my-6 rounded-lg border border-white bg-white px-3 py-2 text-sm font-semibold text-black transition hover:bg-white/10 hover:text-white md:mt-4"
@@ -110,7 +110,15 @@ export default function Home({ images }) {
           Unsplash
         </a>
         {' '}
-        for the pictures.
+        & {' '}
+        <a
+          href="https://alt-text-generator.vercel.app"
+          target="_blank"
+          className="font-semibold hover:text-white"
+          rel="noreferrer"
+        >
+          Alt Generator
+        </a>
       </footer>
     </>
   )
@@ -139,6 +147,12 @@ export async function getStaticProps() {
   for (let i = 0; i < reducedResults.length; i++) {
     reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
   }
+  
+  // for (let i = 0; i < reducedResults.length; i++) {
+  //   const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${reducedResults[i].public_id}`)
+  //   const altText = await res.text()
+  //   reducedResults[i].altText = altText.replace(/"|"/gi, '')
+  // }
 
   return {
     props: {

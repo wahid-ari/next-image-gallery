@@ -1,6 +1,22 @@
 # Next.js & Cloudinary example app
 
-This example shows how to create an image gallery site using Next.js, [Cloudinary](https://cloudinary.com), and [Tailwind](https://tailwindcss.com).
+This example shows how to create an image gallery site using Next.js, [Unsplash](https://unsplash.com), [Tailwind](https://tailwindcss.com) & [Image Alt Generator](https://alt-text-generator.vercel.app).
+
+[Reference](https://twitter.com/nutlope/status/1600528460644057090)
+![Ref](https://pbs.twimg.com/media/FjY3nmpXkAE-JjC?format=jpg&name=large)
+
+```js
+// https://github.com/Nutlope/alt-text-generator
+// https://python-alt-text-generator.vercel.app/generate?imageUrl=
+const ress = await fetch(`https://python-alt-text-generator.vercel.app/generate?imageUrl=${currentPhoto.public_id}`)
+const altTextt = await ress.text()
+console.log(altTextt.split("Caption: ")[1])
+// https://github.com/vercel/examples/tree/main/solutions/alt-tag-generator
+// https://alt-text-generator.vercel.app/api/generate?imageUrl=
+const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${currentPhoto.public_id}`)
+const altText = await res.text()
+currentPhoto.altText = altText.replace(/"|"/gi, '')
+```
 
 ## Deploy your own
 
