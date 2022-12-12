@@ -10,7 +10,7 @@ import getBase64ImageUrl from '@utils/generateBlurPlaceholder'
 import { useLastViewedPhoto } from '@utils/useLastViewedPhoto'
 import { imagesData } from '@data/images'
 
-const Home = ({ images }) => {
+export default function Home({ images }) {
   const router = useRouter()
   const { photoId } = router.query
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
@@ -93,8 +93,7 @@ const Home = ({ images }) => {
                 height={480}
                 sizes="(max-width: 640px) 100vw,
                   (max-width: 1280px) 50vw,
-                  (max-width: 1536px) 33vw,
-                  25vw"
+                  33vw"
               />
             </Link>
           ))}
@@ -117,17 +116,15 @@ const Home = ({ images }) => {
   )
 }
 
-export default Home
-
 export async function getStaticProps() {
   const results = imagesData
-
   let reducedResults = []
 
   let i = 0
   for (let result of results.resources) {
     reducedResults.push({
       id: i,
+      href: result.href,
       public_id: result.public_id,
       format: result.format,
     })

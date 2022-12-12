@@ -4,10 +4,7 @@ import useKeypress from 'react-use-keypress'
 import { useLastViewedPhoto } from '@utils/useLastViewedPhoto'
 import SharedModal from './SharedModal'
 
-export default function Carousel({
-  index,
-  currentPhoto,
-}) {
+export default function Carousel({ index, currentPhoto }) {
   const router = useRouter()
   const [, setLastViewedPhoto] = useLastViewedPhoto()
 

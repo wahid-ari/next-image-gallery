@@ -4,7 +4,7 @@ import Carousel from '@components/Carousel'
 import getBase64ImageUrl from '@utils/generateBlurPlaceholder'
 import { imagesData } from '@data/images'
 
-const Home = ({ currentPhoto }) => {
+export default function Home({ currentPhoto }) {
   const router = useRouter()
   const { photoId } = router.query
   let index = Number(photoId)
@@ -25,16 +25,15 @@ const Home = ({ currentPhoto }) => {
   )
 }
 
-export default Home
-
-export const getStaticProps = async (context) => {
+export async function getStaticProps(context) {
   const results = imagesData
-
   let reducedResults = []
+
   let i = 0
   for (let result of results.resources) {
     reducedResults.push({
       id: i,
+      href: result.href,
       public_id: result.public_id,
       format: result.format,
     })

@@ -5,10 +5,7 @@ import { motion } from 'framer-motion'
 import useKeypress from 'react-use-keypress'
 import SharedModal from './SharedModal'
 
-export default function Modal({
-  images,
-  onClose,
-}) {
+export default function Modal({ images, onClose }) {
   let overlayRef = useRef()
   const router = useRouter()
 
