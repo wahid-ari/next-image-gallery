@@ -62,11 +62,13 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                 className="absolute"
               >
                 <Image
+                  alt={currentImage.altText || "Photo"}
+                  placeholder="blur"
+                  blurDataURL={currentImage.blurDataUrl}
                   src={`${currentImage.public_id}.${currentImage.format}`}
                   width={navigation ? 1280 : 1920}
                   height={navigation ? 853 : 1280}
                   priority={true}
-                  alt={currentImage.altText || "Photo"}
                   onLoadingComplete={() => setLoaded(true)}
                 />
               </motion.div>
@@ -202,7 +204,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                 className="mx-auto mt-6 mb-6 flex aspect-[3/2] h-14"
               >
                 <AnimatePresence initial={false}>
-                  {filteredImages.map(({ public_id, format, id }) => (
+                  {filteredImages.map(({ public_id, format, id, blurDataUrl }) => (
                     <motion.button
                       initial={{
                         width: '0%',
@@ -231,6 +233,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                           : 'brightness-50 contrast-125 hover:brightness-75'
                           } h-full transform object-cover transition`}
                         src={`${public_id}.${format}`}
+                        blurDataURL={blurDataUrl}
                       />
                     </motion.button>
                   ))}

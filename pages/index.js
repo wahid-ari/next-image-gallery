@@ -73,7 +73,7 @@ export default function Home({ images }) {
               Clone and Deploy
             </a>
           </div>
-          {images.map(({ id, public_id, format, blurDataUrl }) => (
+          {images.map(({ id, public_id, blurDataUrl }) => (
             <Link
               key={id}
               href={`/?photoId=${id}`}
@@ -88,7 +88,7 @@ export default function Home({ images }) {
                 style={{ transform: 'translate3d(0, 0, 0)' }}
                 placeholder="blur"
                 blurDataURL={blurDataUrl}
-                src={`${public_id}.${format}`}
+                src={public_id}
                 width={720}
                 height={480}
                 sizes="(max-width: 640px) 100vw,
