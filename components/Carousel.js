@@ -24,6 +24,7 @@ export default function Carousel({ index, currentPhoto }) {
   return (
     <div className="fixed inset-0 flex items-center justify-center">
       <button
+        aria-label='Back'
         className="absolute inset-0 z-30 cursor-default bg-gradient-to-br from-black/75 to-neutral-500/40 backdrop-blur-2xl"
         onClick={closeModal}
       >
