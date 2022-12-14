@@ -23,6 +23,8 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
     range(index - 15, index + 15).includes(img.id)
   )
 
+  // console.log(filteredImages)
+
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       navigation ? (
@@ -61,16 +63,29 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                 exit="exit"
                 className="absolute"
               >
-                <Image
-                  alt={currentImage.altText || "Photo"}
-                  placeholder="blur"
-                  blurDataURL={currentImage.blurDataUrl}
-                  src={`${currentImage.public_id}.${currentImage.format}`}
-                  width={navigation ? 1280 : 1920}
-                  height={navigation ? 853 : 1280}
-                  priority={true}
-                  onLoadingComplete={() => setLoaded(true)}
-                />
+                {currentImage.blurDataUrl ?
+                  <Image
+                    alt={currentImage.altText || "Photo"}
+                    placeholder="blur"
+                    blurDataURL={currentImage.blurDataUrl}
+                    src={`${currentImage.public_id}&w=1280&h=856&q=80`}
+                    width={1280}
+                    height={856}
+                    priority={true}
+                    onLoadingComplete={() => setLoaded(true)}
+                  />
+                  :
+                  <Image
+                    alt={currentImage.altText || "Photo"}
+                    src={`${currentImage.public_id}&w=1280&h=856&q=80`}
+                    width={1280}
+                    height={856}
+                    priority={true}
+                    className={`duration-700 ease-in-out transform transition will-change-auto
+                    ${loaded ? "blur-0 grayscale-0" : "blur-2xl grayscale"}`}
+                    onLoadingComplete={() => setLoaded(true)}
+                  />
+                }
               </motion.div>
             </AnimatePresence>
           </div>
@@ -118,7 +133,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                       <Twitter className="h-5 w-5" />
                     </a>
                     <a
-                      href={`${currentImage.public_id}.${currentImage.format}`}
+                      href={currentImage.public_id}
                       className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                       target="_blank"
                       title="Open fullsize version"
@@ -127,7 +142,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                       <ArrowsPointingOutIcon className="h-5 w-5" />
                     </a>
                     <a
-                      href={`${currentImage.href}`}
+                      href={currentImage.href}
                       className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                       target="_blank"
                       title="Open in Unsplash"
@@ -148,7 +163,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                       <Twitter className="h-5 w-5" />
                     </a>
                     <a
-                      href={`${currentImage.public_id}.${currentImage.format}`}
+                      href={currentImage.public_id}
                       className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                       target="_blank"
                       title="Open fullsize version"
@@ -157,7 +172,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                       <ArrowsPointingOutIcon className="h-5 w-5" />
                     </a>
                     <a
-                      href={`${currentImage.href}`}
+                      href={currentImage.href}
                       className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                       target="_blank"
                       title="Open in Unsplash"
@@ -168,12 +183,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                   </>
                 )}
                 <button
-                  onClick={() =>
-                    downloadPhoto(
-                      `${currentImage.public_id}.${currentImage.format}`,
-                      `${index}.jpg`
-                    )
-                  }
+                  onClick={() => downloadPhoto(currentImage.public_id, `${index}.jpg`)}
                   className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                   title="Download fullsize version"
                 >
@@ -230,10 +240,10 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                         height={120}
                         className={`${id === index
                           ? 'brightness-110 hover:brightness-110'
-                          : 'brightness-50 contrast-125 hover:brightness-75'
-                          } h-full transform object-cover transition`}
-                        src={`${public_id}.${format}`}
-                        blurDataURL={blurDataUrl}
+                          : 'brightness-50 contrast-125 hover:brightness-75 hover:scale-110'
+                          } h-full transform object-cover transition duration-300`}
+                        src={`${public_id}&w=180&h=120&q=80`}
+                      // blurDataURL={blurDataUrl}
                       />
                     </motion.button>
                   ))}

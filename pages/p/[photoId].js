@@ -10,12 +10,13 @@ export default function Home({ currentPhoto }) {
   let index = Number(photoId)
 
   const currentPhotoUrl = `${currentPhoto.public_id}.${currentPhoto.format}`
-  const title = `${currentPhoto.altText} | Next.js Gallery Template`
+  // const title = `${currentPhoto.altText} | Next.js Gallery Template`
 
   return (
     <>
       <Head>
-        <title>{title}</title>
+        {/* <title>{title}</title> */}
+        <title>Next.js Gallery Template</title>
         <meta property="og:image" content={currentPhotoUrl} />
         <meta name="twitter:image" content={currentPhotoUrl} />
       </Head>
@@ -27,24 +28,24 @@ export default function Home({ currentPhoto }) {
 }
 
 export async function getStaticProps(context) {
-  const results = imagesData
-  let reducedResults = []
+  // const results = imagesData
+  // let reducedResults = []
 
-  let i = 0
-  for (let result of results.resources) {
-    reducedResults.push({
-      id: i,
-      href: result.href,
-      public_id: result.public_id,
-      format: result.format,
-    })
-    i++
-  }
+  // let i = 0
+  // for (let result of results.resources) {
+  //   reducedResults.push({
+  //     id: i,
+  //     href: result.href,
+  //     public_id: result.public_id,
+  //     format: result.format,
+  //   })
+  //   i++
+  // }
 
-  const currentPhoto = reducedResults.find(
+  const currentPhoto = imagesData.resources.find(
     (img) => img.id === Number(context.params.photoId)
   )
-  currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
+  // currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
   // https://twitter.com/nutlope/status/1600528460644057090
   // https://github.com/Nutlope/alt-text-generator
   // https://python-alt-text-generator.vercel.app/generate?imageUrl=
@@ -53,9 +54,9 @@ export async function getStaticProps(context) {
   // const ress = await fetch(`https://python-alt-text-generator.vercel.app/generate?imageUrl=${currentPhoto.public_id}`)
   // const altTextt = await ress.text()
   // console.log(altTextt.split("Caption: ")[1])
-  const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${currentPhoto.public_id}`)
-  const altText = await res.text()
-  currentPhoto.altText = altText.replace(/"|"/gi, '')
+  // const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${currentPhoto.public_id}`)
+  // const altText = await res.text()
+  // currentPhoto.altText = altText.replace(/"|"/gi, '')
 
   return {
     props: {
@@ -65,10 +66,10 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const results = imagesData
+  // const results = imagesData
 
   let fullPaths = []
-  for (let i = 0; i < results.resources.length; i++) {
+  for (let i = 0; i < imagesData.resources.length; i++) {
     fullPaths.push({ params: { photoId: i.toString() } })
   }
 

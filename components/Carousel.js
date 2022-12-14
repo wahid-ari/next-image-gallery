@@ -27,12 +27,15 @@ export default function Carousel({ index, currentPhoto }) {
         className="absolute inset-0 z-30 cursor-default bg-gradient-to-br from-black/75 to-neutral-500/40 backdrop-blur-2xl"
         onClick={closeModal}
       >
-        <Image
-          src={currentPhoto.blurDataUrl}
-          className="pointer-events-none h-full w-full blur-3xl"
-          alt="blurred background"
-          fill
-        />
+        {currentPhoto.blurDataUrl ?
+          <Image
+            src={currentPhoto.blurDataUrl}
+            className="pointer-events-none h-full w-full blur-3xl"
+            alt="blurred background"
+            fill
+          />
+          : null
+        }
       </button>
       <SharedModal
         index={index}

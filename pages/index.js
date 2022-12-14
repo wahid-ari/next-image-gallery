@@ -1,14 +1,15 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Bridge from '@components/Icons/Bridge'
 import Logo from '@components/Icons/Logo'
 import Modal from '@components/Modal'
-import getBase64ImageUrl from '@utils/generateBlurPlaceholder'
+// import getBase64ImageUrl from '@utils/generateBlurPlaceholder'
 import { useLastViewedPhoto } from '@utils/useLastViewedPhoto'
 import { imagesData } from '@data/images'
+import BlurImage from '@components/BlurImage'
 
 export default function Home({ images }) {
   const router = useRouter()
@@ -82,7 +83,8 @@ export default function Home({ images }) {
               shallow
               className="after:content group relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
             >
-              <Image
+              <BlurImage src={`${public_id}&w=720&h=480&q=80`} />
+              {/* <Image
                 alt="Photo"
                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
                 style={{ transform: 'translate3d(0, 0, 0)' }}
@@ -94,7 +96,7 @@ export default function Home({ images }) {
                 sizes="(max-width: 640px) 100vw,
                   (max-width: 1280px) 50vw,
                   33vw"
-              />
+              /> */}
             </Link>
           ))}
         </div>
@@ -125,28 +127,28 @@ export default function Home({ images }) {
 }
 
 export async function getStaticProps() {
-  const results = imagesData
-  let reducedResults = []
+  // const results = imagesData
+  // let reducedResults = []
 
-  let i = 0
-  for (let result of results.resources) {
-    reducedResults.push({
-      id: i,
-      href: result.href,
-      public_id: result.public_id,
-      format: result.format,
-    })
-    i++
-  }
+  // let i = 0
+  // for (let result of results.resources) {
+  //   reducedResults.push({
+  //     id: i,
+  //     href: result.href,
+  //     public_id: result.public_id,
+  //     format: result.format,
+  //   })
+  //   i++
+  // }
 
-  const blurImagePromises = results.resources.map((image) => {
-    return getBase64ImageUrl(image)
-  })
-  const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
+  // const blurImagePromises = results.resources.map((image) => {
+  //   return getBase64ImageUrl(image)
+  // })
+  // const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
 
-  for (let i = 0; i < reducedResults.length; i++) {
-    reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
-  }
+  // for (let i = 0; i < reducedResults.length; i++) {
+  //   reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
+  // }
   
   // for (let i = 0; i < reducedResults.length; i++) {
   //   const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${reducedResults[i].public_id}`)
@@ -156,7 +158,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      images: reducedResults,
+      // images: reducedResults,
+      images: imagesData.resources
     },
   }
 }
