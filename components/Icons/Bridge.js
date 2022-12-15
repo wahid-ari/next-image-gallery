@@ -8,10 +8,8 @@ export default function Bridge() {
       width="620"
       height="704"
       xmlns="http://www.w3.org/2000/svg"
+      title="Line drawing of the Golden Gate Bridge in San Francisco."
     >
-      <title id="conf-city-title">
-        Line drawing of the Golden Gate Bridge in San Francisco.
-      </title>
       <path d="M372.5 299.5L616.5 335" stroke="currentColor" />
       <path
         d="M370 16.5C429.833 101.833 562.9 284 616.5 330"

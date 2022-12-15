@@ -11,14 +11,23 @@ export default function Home({ currentPhoto }) {
 
   const currentPhotoUrl = `${currentPhoto.public_id}&w=720&h=480&q=80`
   // const title = `${currentPhoto.altText} | Next.js Gallery Template`
+  const description = `${currentPhoto.altText}`
+  const siteName = `next-image-galleryy.vercel.app/p/${index}`
 
   return (
     <>
       <Head>
         {/* <title>{title}</title> */}
         <title>Next.js Gallery Template</title>
+        <meta name="description" content={description} />
         <meta property="og:image" content={currentPhotoUrl} />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:description" content={description} />
+        <meta property="og:title" content="Next.js Gallery Template" />
         <meta name="twitter:image" content={currentPhotoUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Next.js Gallery Template" />
+        <meta name="twitter:description" content={description} />
       </Head>
       <main className="mx-auto max-w-[1960px] p-4">
         <Carousel currentPhoto={currentPhoto} index={index} />
@@ -56,9 +65,9 @@ export async function getStaticProps(context) {
   // const ress = await fetch(`https://python-alt-text-generator.vercel.app/generate?imageUrl=${currentPhoto.public_id}`)
   // const altTextt = await ress.text()
   // console.log(altTextt.split("Caption: ")[1])
-  // const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${currentPhoto.public_id}`)
-  // const altText = await res.text()
-  // currentPhoto.altText = altText.replace(/"|"/gi, '')
+  const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${currentPhoto.public_id}&w=240&q=50`)
+  const altText = await res.text()
+  currentPhoto.altText = altText.replace(/"|"/gi, '')
 
   return {
     props: {
