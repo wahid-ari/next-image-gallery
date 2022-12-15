@@ -23,8 +23,6 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
     range(index - 15, index + 15).includes(img.id)
   )
 
-  // console.log(filteredImages)
-
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       navigation ? (
@@ -101,7 +99,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                   {index > 0 && (
                     <button
                       title="Previous Image"
-                      className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-2 sm:p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+                      className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-2 sm:p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none duration-200"
                       style={{ transform: 'translate3d(0, 0, 0)' }}
                       onClick={() => changePhotoId(index - 1)}
                     >
@@ -111,7 +109,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                   {index + 1 < images.length && (
                     <button
                       title="Next Image"
-                      className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-2 sm:p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+                      className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-2 sm:p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none duration-200"
                       style={{ transform: 'translate3d(0, 0, 0)' }}
                       onClick={() => changePhotoId(index + 1)}
                     >
@@ -125,7 +123,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                   <>
                     <a
                       href={`https://twitter.com/intent/tweet?text=Check%20out%20this%20pic%20from%20Next.js%0A%0Ahttps://next-image-galleryy.vercel.app/p/${index}`}
-                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white duration-200"
                       target="_blank"
                       title="Share to Twitter"
                       rel="noreferrer"
@@ -134,7 +132,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                     </a>
                     <a
                       href={currentImage.public_id}
-                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white duration-200"
                       target="_blank"
                       title="Open fullsize version"
                       rel="noreferrer"
@@ -143,7 +141,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                     </a>
                     <a
                       href={currentImage.href}
-                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white duration-200"
                       target="_blank"
                       title="Open in Unsplash"
                       rel="noreferrer"
@@ -155,7 +153,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                   <>
                     <a
                       href={`https://twitter.com/intent/tweet?text=Check%20out%20this%20pic%20from%20Next.js%0A%0Ahttps://next-image-galleryy.vercel.app/p/${index}`}
-                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white duration-200"
                       target="_blank"
                       title="Share to Twitter"
                       rel="noreferrer"
@@ -164,7 +162,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                     </a>
                     <a
                       href={currentImage.public_id}
-                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white duration-200"
                       target="_blank"
                       title="Open fullsize version"
                       rel="noreferrer"
@@ -173,7 +171,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                     </a>
                     <a
                       href={currentImage.href}
-                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                      className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white duration-200"
                       target="_blank"
                       title="Open in Unsplash"
                       rel="noreferrer"
@@ -184,7 +182,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                 )}
                 <button
                   onClick={() => downloadPhoto(currentImage.public_id, `${index}.jpg`)}
-                  className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                  className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white duration-200"
                   title="Download fullsize version"
                 >
                   <ArrowDownTrayIcon className="h-5 w-5" />
@@ -195,7 +193,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                   aria-label='close'
                   title="Close"
                   onClick={() => closeModal()}
-                  className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                  className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white duration-200"
                 >
                   {navigation ? (
                     <XMarkIcon className="h-5 w-5" />

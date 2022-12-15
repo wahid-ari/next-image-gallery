@@ -25,18 +25,17 @@ export default function Carousel({ index, currentPhoto }) {
     <div className="fixed inset-0 flex items-center justify-center">
       <button
         aria-label='Back'
-        className="absolute inset-0 z-30 cursor-default bg-gradient-to-br from-black/75 to-neutral-500/40 backdrop-blur-2xl"
+        className="absolute inset-0 z-30 cursor-default bg-black backdrop-blur-2xl w-full h-full"
         onClick={closeModal}
       >
-        {currentPhoto.blurDataUrl ?
-          <Image
-            src={currentPhoto.blurDataUrl}
-            className="pointer-events-none h-full w-full blur-3xl"
-            alt="blurred background"
-            fill
-          />
-          : null
-        }
+        <Image
+          src={`${currentPhoto.public_id}&w=100&h=80`}
+          className="pointer-events-none h-full w-full blur-3xl"
+          alt="blurred background"
+          width={100}
+          height={80}
+          priority={true}
+        />
       </button>
       <SharedModal
         index={index}

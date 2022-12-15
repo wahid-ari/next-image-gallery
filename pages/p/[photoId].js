@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Carousel from '@components/Carousel'
-import getBase64ImageUrl from '@utils/generateBlurPlaceholder'
+// import getBase64ImageUrl from '@utils/generateBlurPlaceholder'
 import { imagesData } from '@data/images'
 
 export default function Home({ currentPhoto }) {
@@ -45,7 +45,9 @@ export async function getStaticProps(context) {
   const currentPhoto = imagesData.resources.find(
     (img) => img.id === Number(context.params.photoId)
   )
-  // currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
+  
+  // currentPhoto.blurDataUrl = await getBase64ImageUrl(`${currentPhoto.public_id}&w=480&h=480`)
+
   // https://twitter.com/nutlope/status/1600528460644057090
   // https://github.com/Nutlope/alt-text-generator
   // https://python-alt-text-generator.vercel.app/generate?imageUrl=
