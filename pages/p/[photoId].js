@@ -9,7 +9,7 @@ export default function Home({ currentPhoto }) {
   const { photoId } = router.query
   let index = Number(photoId)
 
-  const currentPhotoUrl = `${currentPhoto.public_id}.${currentPhoto.format}`
+  const currentPhotoUrl = `${currentPhoto.public_id}&w=720&h=480&q=80`
   // const title = `${currentPhoto.altText} | Next.js Gallery Template`
 
   return (
