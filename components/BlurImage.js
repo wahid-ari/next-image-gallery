@@ -10,7 +10,7 @@ export default function BlurImage({ src }) {
         alt='Images'
         className={`
         duration-700 ease-in-out transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110
-        ${isLoading ? 'blur-2xl grayscale' : 'blur-0 grayscale-0'}
+        ${isLoading ? 'blur-2xl' : 'blur-0'}
       `}
         style={{ transform: 'translate3d(0, 0, 0)' }}
         src={src}

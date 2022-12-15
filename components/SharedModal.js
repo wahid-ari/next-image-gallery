@@ -61,7 +61,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                 exit="exit"
                 className="absolute"
               >
-                {currentImage.blurDataUrl ?
+                {/* {currentImage.blurDataUrl ?
                   <Image
                     alt={currentImage.altText || "Photo"}
                     placeholder="blur"
@@ -72,18 +72,18 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                     priority={true}
                     onLoadingComplete={() => setLoaded(true)}
                   />
-                  :
-                  <Image
-                    alt={currentImage.altText || "Photo"}
-                    src={`${currentImage.public_id}&w=1280&h=856&q=80`}
-                    width={1280}
-                    height={856}
-                    priority={true}
-                    className={`duration-700 ease-in-out transform transition will-change-auto
-                    ${loaded ? "blur-0 grayscale-0" : "blur-2xl grayscale"}`}
-                    onLoadingComplete={() => setLoaded(true)}
-                  />
-                }
+                  : */}
+                <Image
+                  alt={currentImage.altText || "Photo"}
+                  src={`${currentImage.public_id}&w=1280&h=856&q=80`}
+                  width={1280}
+                  height={856}
+                  priority={true}
+                  className={`duration-700 ease-in-out transform transition will-change-auto
+                    ${loaded ? "blur-0" : "blur-2xl"}`}
+                  onLoadingComplete={() => setLoaded(true)}
+                />
+                {/* } */}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -212,7 +212,7 @@ export default function SharedModal({ index, images, changePhotoId, closeModal, 
                 className="mx-auto mt-6 mb-6 flex aspect-[3/2] h-14"
               >
                 <AnimatePresence initial={false}>
-                  {filteredImages.map(({ public_id, format, id, blurDataUrl }) => (
+                  {filteredImages.map(({ public_id, id }) => (
                     <motion.button
                       initial={{
                         width: '0%',

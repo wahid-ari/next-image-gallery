@@ -54,7 +54,7 @@ export async function getStaticProps(context) {
   const currentPhoto = imagesData.resources.find(
     (img) => img.id === Number(context.params.photoId)
   )
-  
+
   // currentPhoto.blurDataUrl = await getBase64ImageUrl(`${currentPhoto.public_id}&w=480&h=480`)
 
   // https://twitter.com/nutlope/status/1600528460644057090

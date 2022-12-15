@@ -81,7 +81,7 @@ export default function Home({ images }) {
               Clone and Deploy
             </a>
           </div>
-          {images.map(({ id, public_id, blurDataUrl }) => (
+          {images.map(({ id, public_id }) => (
             <Link
               key={id}
               href={`/?photoId=${id}`}
@@ -156,7 +156,7 @@ export async function getStaticProps() {
   // for (let i = 0; i < reducedResults.length; i++) {
   //   reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
   // }
-  
+
   // for (let i = 0; i < reducedResults.length; i++) {
   //   const res = await fetch(`https://alt-text-generator.vercel.app/api/generate?imageUrl=${reducedResults[i].public_id}`)
   //   const altText = await res.text()
